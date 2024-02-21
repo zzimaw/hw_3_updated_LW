@@ -1,5 +1,32 @@
 class EntriesController < ApplicationController
-  def index
-    render :template => "entries/index"
+  def show
+    @entry = Entry.find_by({"id" => params["id"]})
+    @place = Place.find_by({"id" => @entry["place_id"]})
+    # render entry/show view with details about Entry
+  end
+
+  def new
+    @place = Place.find_by({ "id" => params["place_id"] })
+    # render contacts/new view with new Contact form
+  end
+
+  def create
+    # start with a new Contact
+    @entry = Entry.new
+
+    # assign user-entered form data to Contact's columns
+    @entry["title"] = params["title"]
+    @entry["description"] = params["description"]
+    @entry["posted_on"] = params["posted_on"]
+    @entry["place_id"] = params["place_id"]
+
+    # assign relationship between Contact and Company
+    @entry["place_id"] = params["place_id"]
+
+    # save Contact row
+    @entry.save
+
+    # redirect user
+    redirect_to "/places/#{@entry["place_id"]}"
   end
 end
