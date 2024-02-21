@@ -12,17 +12,17 @@ class PlacesController < ApplicationController
   end
 
   def new
-    # render view with new Company form
+    # render view with new Place form
   end
 
   def create
-    # start with a new Company
+    # start with a new Place
     @place = Place.new
 
-    # assign user-entered form data to Company's columns
+    # assign user-entered form data to Place's columns
     @place["name"] = params["name"]
 
-    # save Company row
+    # save Place row
     @place.save
 
     # redirect user
