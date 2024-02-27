@@ -1,4 +1,4 @@
-<h1>New Place</h1>
+<h1>New Post</h1>
 
 <form action="/entries" method="post">
   <p>
@@ -15,10 +15,9 @@
 
   </p>
 
-  <!-- transfer state from the previous action to the next -->
-  <p>
-    <label for="place_id">Place</label>
-    <input type="text" name="place_id" value="<%= @place["id"] %>">
+  
+    <input type="hidden" name="place_id" value="<%= @place["id"] %>" id="place_id_input">
   </p>
   <button>Submit</button>
+  <a href="/places/<%= @place["id"] %>">Cancel</a>
 </form>

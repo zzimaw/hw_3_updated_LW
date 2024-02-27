@@ -8,6 +8,8 @@ class PlacesController < ApplicationController
   def show
     # find a Place
     @place = Place.find_by({ "id" => params["id"] })
+    #find an Entry for the Place
+    @entries = Entry.where({ "place_id" => @place["id"] })
 
   end
 
